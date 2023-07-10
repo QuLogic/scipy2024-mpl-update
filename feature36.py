@@ -3,6 +3,7 @@ Feature highlights for Matplotlib 3.6.0.
 """
 
 import io
+import os
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
@@ -43,16 +44,15 @@ def font_fallback():
     Create slide for font fallback highlight.
     """
 
+    noto = 'Noto Sans JP' if os.name == 'nt' else 'Noto Sans CJK JP'
     # We can't show this directly because font fallback is only in Agg
     # backends, not the PDF backend.
     fig = plt.figure(figsize=(19.2, 10.8), dpi=100)
     for y, family in [
-            (0.8, ['WenQuanYi Zen Hei']),
-            (0.65, ['Noto Sans CJK JP']),
+            (0.65, [noto]),
             (0.45, ['DejaVu Sans']),
-            (0.25, ['DejaVu Sans', 'Noto Sans CJK JP']),
-            (0.1, ['DejaVu Sans', 'WenQuanYi Zen Hei'])]:
-        fig.text(0.05, y, f'There are 几个汉字 in between!\n{family}',
+            (0.25, ['DejaVu Sans', noto])]:
+        fig.text(0.05, y, f'There are 染 感じ in between!\n{family}',
                  family=family, fontsize=48)
 
     data = io.BytesIO()

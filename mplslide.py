@@ -2,6 +2,7 @@
 Common functions for working with slides.
 """
 
+import os
 import sys
 
 import matplotlib.pyplot as plt
@@ -35,10 +36,18 @@ def check_requirements():
     # The original font is Calibri, if that is not installed, we fall back
     # to Carlito, which is metrically equivalent.
     calibri = carlito = None
-    if 'Calibri' in matplotlib.font_manager.findfont('Calibri:bold'):
+    try:
+        matplotlib.font_manager.findfont('Calibri:bold', fallback_to_default=False)
+    except ValueError:
+        pass
+    else:
         calibri = matplotlib.font_manager.FontProperties(family='Calibri',
                                                          weight='bold')
-    if 'Carlito' in matplotlib.font_manager.findfont('Carlito:bold'):
+    try:
+        matplotlib.font_manager.findfont('Carlito:bold', fallback_to_default=False)
+    except ValueError:
+        pass
+    else:
         carlito = matplotlib.font_manager.FontProperties(family='Carlito',
                                                          weight='bold')
     global FONT, LOGO_FONT
