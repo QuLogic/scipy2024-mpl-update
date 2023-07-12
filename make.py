@@ -20,7 +20,6 @@ from mplslide import check_requirements
 check_requirements()  # noqa: F402
 
 from title import create_icon_axes, slides as title_slides
-from news import slides as news_slides
 from timeline import slides as history_slides
 from feature36 import slides as feature36_slides
 from feature37 import slides as feature37_slides
@@ -36,7 +35,6 @@ MPL_PATH = sys.argv[1]
 PAGES = [
     # Tuple of function + any arguments.
     (title_slides, ),
-    (news_slides, ),
     (history_slides, MPL_PATH, ),
     (feature36_slides, ),
     (feature37_slides, ),
