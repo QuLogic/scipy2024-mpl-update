@@ -23,6 +23,7 @@ from title import create_icon_axes, slides as title_slides
 from news import slides as news_slides
 from timeline import slides as history_slides
 from feature36 import slides as feature36_slides
+from feature37 import slides as feature37_slides
 from plan import slides as plan_slides
 from end import slides as end_slides
 
@@ -38,6 +39,7 @@ PAGES = [
     (news_slides, ),
     (history_slides, MPL_PATH, ),
     (feature36_slides, ),
+    (feature37_slides, ),
     (plan_slides, ),
     (end_slides, ),
 ]
