@@ -7,6 +7,7 @@ import os
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
+import numpy as np
 from PIL import Image
 
 from mplslide import new_slide, slide_heading, annotate_pr_author
@@ -14,6 +15,56 @@ from mplslide import new_slide, slide_heading, annotate_pr_author
 
 CODE = dict(fontfamily='monospace', fontsize=40, verticalalignment='top',
             alpha=0.7)
+
+
+def gapcolour():
+    """
+    Create slide for gapcolor argument.
+    """
+    fig = new_slide()
+    slide_heading(fig, '3.6: Striped lines')
+
+    x = np.linspace(1., 3., 10)
+    y = x ** 3
+
+    ax = fig.subplots()
+    fig.subplots_adjust(bottom=0.15, top=0.8)
+
+    ax.plot(x, y, linestyle='--', color='orange', gapcolor='blue',
+            linewidth=30, label="color='orange', gapcolor='blue'")
+    ax.legend(loc='upper left', handlelength=15, fontsize=24)
+
+    annotate_pr_author(fig, 'rcomer', pr=23208)
+
+    return fig
+
+
+def inset_axes_types():
+    """
+    Create slide for Axes.inset_axes projection/polar/axes_class support.
+    """
+    fig = new_slide()
+    slide_heading(fig, '3.6: Axes.inset_axes flexibility')
+
+    top, bottom = fig.subfigures(2, 1, hspace=0)
+
+    top.text(0.05, 0.6, '''fig, ax = plt.subplots()
+ax.plot([0, 2], [1, 2])
+polar_ax = ax.inset_axes([0.1, 0.6, 0.3, 0.3],
+                         projection='polar')
+polar_ax.plot([0, 2], [1, 2])''', **CODE)
+
+    ax = bottom.subplots()
+    bottom.subplots_adjust(bottom=0.2)
+
+    ax.plot([0, 2], [1, 2])
+
+    polar_ax = ax.inset_axes([0.1, 0.6, 0.3, 0.3], projection='polar')
+    polar_ax.plot([0, 2], [1, 2])
+
+    annotate_pr_author(fig, 'rcomer', pr=22608)
+
+    return fig
 
 
 def better3d():
@@ -79,6 +130,8 @@ def slides():
     Return slides for this section.
     """
     return (
+        gapcolour(),
+        inset_axes_types(),
         better3d(),
         font_fallback(),
     )
