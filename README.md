@@ -1,11 +1,11 @@
-Matplotlib Project Update for SciPy 2023
+Matplotlib Project Update for SciPy 2024
 ========================================
 
 This repository contains code to create the presentation for the Matplotlib
-project update at SciPy 2023.
+project update at SciPy 2024.
 
 If you want to view the resulting PDF directly, you can [find a generated copy
-in the release](https://github.com/QuLogic/scipy2023-mpl-update/releases).
+in the release](https://github.com/QuLogic/scipy2024-mpl-update/releases).
 
 Requirements
 ------------
@@ -31,7 +31,7 @@ $ ./make.py /path/to/matplotlib/checkout
 ```
 
 which will produce `slides.pdf` directly from Matplotlib and
-`scipy2023-mpl-update.pdf` as either a copy or a linearized version, depending
+`scipy2024-mpl-update.pdf` as either a copy or a linearized version, depending
 on whether `qpdf` is installed.
 
 Overview
