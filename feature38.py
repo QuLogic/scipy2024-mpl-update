@@ -125,35 +125,37 @@ def mathtext():
     return fig
 
 
-def misc():
+def typing():
     """
     Create slide for miscellaneous 3.8 features.
     """
     fig = new_slide()
 
-    slide_heading(fig, '3.8: Upcoming features')
+    slide_heading(fig, '3.8: Type hints (provisional)')
 
     level1 = partial(bullet_level1, fig)
     level2 = partial(bullet_level2, fig)
 
-    level1(0.8, f'{BULLET} Documentation guides overhaul')
-    level1(0.7, f'{BULLET} GSoD for example categorization (Eva Sibinga)')
-
-    level1(0.6, f'{BULLET} Typing support')
-    level2(0.6,
-           '\n\n'
+    level1(0.8, f'{BULLET} Simple signatures')
+    level2(0.74,
            'bar(x: float | ArrayLike, height: float | ArrayLike,\n'
            '    width: float | ArrayLike, bottom: float | ArrayLike | None,\n'
-           '    *, align: Literal["center", "edge"],\n'
+           '    *, align: Literal["center", "edge"], data = ...,\n'
            '    **kwargs) -> BarContainer:',
            **CODE)
 
-    level1(0.3, f'{BULLET} Your Contribution?')
-    t = level2(
-        0.3,
-        f'\n{BULLET} New Contributors Meeting (first Tuesday of month)')
-    t.set_url('https://hackmd.io/@matplotlib/SJ3oc8oqq')
-
+    level1(0.55, f'{BULLET} Complex (overloaded) signatures')
+    level2(0.49,
+           'def subplot_mosaic(mosaic: str, *,\n'
+           '    empty_sentinel: str, subplot_kw: dict[str, Any] | None\n'
+           ') -> dict[str, Axes]: ...\n'
+           'def subplot_mosaic(mosaic: list[HashableList[_T]], *,\n'
+           '    empty_sentinel: _T, subplot_kw: dict[str, Any] | None,\n'
+           ') -> dict[_T, Axes]: ...\n'
+           'def subplot_mosaic(mosaic: list[HashableList[Hashable]], *,\n'
+           '    empty_sentinel: Any, subplot_kw: dict[str, Any] | None,\n'
+           ') -> dict[Hashable, Axes]: ...\n',
+           **CODE)
     return fig
 
 
@@ -164,5 +166,5 @@ def slides():
     return (
         ecdf(),
         mathtext(),
-        misc(),
+        typing(),
     )
