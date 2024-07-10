@@ -12,7 +12,7 @@ Requirements
 
 * Python 3.7+
 * NumPy
-* Matplotlib >= 3.6.0dev
+* Matplotlib >= 3.10.0dev
 * A git checkout of the `matplotlib` source code, to produce the timeline.
 * The Carlito font.
 
@@ -47,6 +47,7 @@ All slides are produced in the remaining Python files:
 * `title.py`: The title page.
 * `news.py`: General news.
 * `timeline.py`: A timeline of releases.
-* `feature35.py`: Feature highlights for Matplotlib 3.5.0.
-* `feature36.py`: Feature highlights for Matplotlib 3.6.0.
+* `feature38.py`: Feature highlights for Matplotlib 3.8.0.
+* `feature39.py`: Feature highlights for Matplotlib 3.9.0.
+* `feature310.py`: Feature highlights for Matplotlib 3.10.0.
 * `plan.py`: Future plans.
