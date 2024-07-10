@@ -2,7 +2,7 @@
 Common functions for working with slides.
 """
 
-import os
+import pathlib
 import sys
 
 import matplotlib.pyplot as plt
@@ -33,6 +33,10 @@ def check_requirements():
 
     if len(sys.argv) < 2:
         sys.exit('Usage: %s <matplotlib-path>' % (sys.argv[0], ))
+    fonts = pathlib.Path('fonts')
+    if fonts.is_dir():
+        for font in fonts.glob('*.ttf'):
+            matplotlib.font_manager.fontManager.addfont(font)
     # The original font is Calibri, if that is not installed, we fall back
     # to Carlito, which is metrically equivalent.
     calibri = carlito = None
