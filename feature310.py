@@ -7,7 +7,8 @@ from functools import partial
 import numpy as np
 import matplotlib as mpl
 
-from mplslide import BULLET, FONT, new_slide, slide_heading, annotate_pr_author
+from mplslide import (
+    BULLET, FONT, new_slide, slide_heading, add_qrcode, annotate_pr_author)
 
 CODE = dict(fontfamily='monospace', fontsize=32, verticalalignment='top',
             alpha=0.7)
@@ -128,8 +129,9 @@ def misc():
     level1(0.4, f'{BULLET} Your Contribution?')
     t = level2(
         0.4,
-        f'\n{BULLET} New Contributors Meeting  (first Tuesday of month)')
+        f'\n{BULLET} New Contributors Meeting\n    (first Tuesday of month)')
     t.set_url('https://scientific-python.org/calendars/')
+    add_qrcode(fig, 'https://scientific-python.org/calendars/', [0.6, 0.1, 0.4, 0.4])
 
     return fig
 

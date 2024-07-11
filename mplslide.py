@@ -2,11 +2,14 @@
 Common functions for working with slides.
 """
 
+import io
 import pathlib
 import sys
 
 import matplotlib.pyplot as plt
 import matplotlib.font_manager
+from PIL import Image
+import segno
 
 
 #: The blue used for Matplotlib logo.
@@ -139,3 +142,26 @@ def annotate_pr_author(fig, *authors, pr=None):
                  horizontalalignment='right')
     if pr is not None:
         t.set_url(f'https://github.com/matplotlib/matplotlib/pull/{pr}')
+
+
+def add_qrcode(fig, url, location):
+    """
+    Add a QR code on a figure.
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        The slide figure.
+    url : str
+        THe URL to link with the QR code.
+    location : tuple of int
+        A location accepted by `matplotlib.figure.Figure.add_axes` on which to place
+        the QR image.
+    """
+    qrcode = segno.make(url)
+    out = io.BytesIO()
+    qrcode.save(out, kind='png', compresslevel=0, dark=MPL_BLUE)
+    out.seek(0)
+    img = Image.open(out).convert('RGB')
+    ax = fig.add_axes(location, frameon=False, xticks=[], yticks=[])
+    ax.imshow(img)

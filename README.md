@@ -16,6 +16,7 @@ Requirements
   [#26996](https://github.com/matplotlib/matplotlib/pull/26996)
 * A git checkout of the `matplotlib` source code, to produce the timeline.
 * The Carlito font.
+* The [segno](https://pypi.org/project/segno/) library for QR codes.
 
 Optionally, you may also make available:
 
