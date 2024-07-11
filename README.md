@@ -12,7 +12,8 @@ Requirements
 
 * Python 3.7+
 * NumPy
-* Matplotlib >= 3.10.0dev
+* Matplotlib >= 3.10.0dev, including a merge of
+  [#26996](https://github.com/matplotlib/matplotlib/pull/26996)
 * A git checkout of the `matplotlib` source code, to produce the timeline.
 * The Carlito font.
 
